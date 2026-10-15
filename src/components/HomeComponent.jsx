@@ -8,7 +8,7 @@ export default class HomeComponent extends Component {
     departamentos: [],
     status: false,
     mostrar:false,
-    eliminar:false
+    departamentoSeleccionado:null,
   };
 
   service = new ServiceDepartamentos();
@@ -28,8 +28,17 @@ export default class HomeComponent extends Component {
     })
   }
 
-  mostrarModal=()=>{
-    
+  cambiarMostrar=()=>{
+    this.setState({
+      mostrar:!this.state.mostrar
+    })
+  }
+
+  mostrarModal=(departamento)=>{
+    this.setState({
+      mostrar:true,
+      departamentoSeleccionado:departamento
+    })
   }
   
 
@@ -44,8 +53,12 @@ export default class HomeComponent extends Component {
       return (
         <div>
           <h1>Home Component</h1>
-          
-         
+          {
+          this.state.mostrar == true && (
+            <DeleteDepartamento loadDepartamentos={this.loadDepartamentos} cambiarMostrar={this.cambiarMostrar} departamento={this.state.departamentoSeleccionado}/>
+          )
+          }
+
           <table className="table table-primary table-striped table-hover">
             <thead>
               <tr>
