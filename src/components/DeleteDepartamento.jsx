@@ -25,8 +25,9 @@ export default class DeleteDepartamento extends Component {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title">Eliminar Departamento</h5>
-              <button onClick={this.cancelModal}
+              <button  onClick={this.cancelModal}
                 type="button"
+                //data-bs-dismiss="modal"
                 className="btn-close"
                 aria-label="Close"
               ></button>
